@@ -1,0 +1,82 @@
+Use this 5-minute demo flow.
+
+Before starting, open two terminals:
+
+```powershell
+# Terminal 1
+cd D:\Gurbeer\Assessments\webxai\backend
+py -m uvicorn app.main:app --reload --port 8000
+```
+
+```powershell
+# Terminal 2
+cd D:\Gurbeer\Assessments\webxai\frontend
+npm run dev
+```
+
+Open `http://localhost:5173`.
+
+Demo script:
+
+1. Dashboard  
+   “FraudLens is a graph-backed fraud investigation tool. It uses CognoDB to identify risky transaction networks rather than viewing transactions as isolated records.”
+
+   Point out:
+   - total people and transactions
+   - risk-score distribution
+   - recent alerts that refresh automatically
+
+2. Alerts  
+   Open **Alerts** in the sidebar.
+
+   Explain the three kinds of patterns:
+   - **Circular transfers**: Ring A moves high-value money through a cycle.
+   - **Identity fraud**: Ring B aliases share a device and proxy IP infrastructure.
+   - **Suspicious transaction links**: high-value transactions from the same actor are related.
+
+   Click a person-based alert to open that person’s investigation view.
+
+3. Search & investigate  
+   In **Search**, enter:
+
+   ```text
+   Ring Member
+   ```
+
+   Select a result. Explain that the detail view brings together accounts, devices, IPs, transactions, risk score, and a focused relationship graph.
+
+   Then search:
+
+   ```text
+   Marcus Webb
+   ```
+
+   This opens the seeded high-risk suspect, `P-SUSPECT-01`.
+
+4. Network Graph  
+   Open **Network Graph**.
+
+   Explain the legend:
+   - blue: people
+   - purple: bank accounts
+   - cyan diamonds: transactions
+   - yellow: merchants
+   - gray: devices and IP addresses
+   - dashed edges: detected suspicious relationships
+
+   Use the 100-node option first if the graph feels dense, then drag/zoom nodes to show that the fraud signal comes from connections.
+
+5. Transaction Timeline  
+   Open **Timeline** and enter:
+
+   ```text
+   P-SUSPECT-01
+   ```
+
+   Point out the clustered high-value wire transfers and their risk indicators.
+
+Close with:
+
+> “CognoDB makes the hard questions natural: following multi-hop money flows, finding multiple identities sharing infrastructure, and connecting suspicious transactions. In a relational model, those require complex repeated joins; here they are direct Cypher traversals.”
+
+For the screen recording, capture this exact path: Dashboard → Alerts → Ring Member search/investigation → Network Graph → `P-SUSPECT-01` timeline.
