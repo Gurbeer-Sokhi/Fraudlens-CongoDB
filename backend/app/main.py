@@ -2,10 +2,12 @@
 
 import logging
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from neo4j.exceptions import Neo4jError, ServiceUnavailable
 
 from app.config import settings
@@ -62,3 +64,11 @@ async def neo4j_exception_handler(request, exc):
         status_code=503,
         content={"detail": "Database unavailable. Check COGNO_URI and credentials."},
     )
+
+
+# A deployment image includes the built React application, allowing one web
+# service to serve both the UI and API. This mount is deliberately last so the
+# API and health routes above retain precedence.
+frontend_dist = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+if frontend_dist.is_dir():
+    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")

@@ -1,0 +1,9 @@
+.git
+.venv
+backend/.venv
+backend/.env
+frontend/node_modules
+frontend/dist
+**/__pycache__
+*.pyc
+cognodb-db-*-credentials.txt

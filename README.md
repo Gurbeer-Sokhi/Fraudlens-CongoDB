@@ -180,6 +180,23 @@ npm run dev
 
 Open http://localhost:5173
 
+### 6. Deploy as a Single Service
+
+The included `Dockerfile` builds the React interface and serves it from the
+FastAPI application, so any Docker-compatible host can deploy the complete
+application as one web service. Configure these environment variables in the
+host's dashboard (never commit them):
+
+```env
+COGNO_URI=bolt+s://your-instance.databases.cognodb.cloud
+COGNO_USER=cognodb
+COGNO_PASSWORD=your_password
+PORT=8000
+```
+
+After deployment, open the service URL: it serves the dashboard at `/` and
+the API at `/api/*`.
+
 ## Environment Variables
 
 | Variable | Description | Default |
