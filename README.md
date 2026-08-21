@@ -2,7 +2,7 @@
 
 A full-stack fraud detection application that uses **CognoDB** (Bolt/Cypher, Neo4j-compatible driver) to identify suspicious financial patterns through graph network analysis.
 
-![FraudLens Dashboard](docs/screenshots/dashboard.png)
+![FraudLens Dashboard](docs/screenshots/dashboard-live.png)
 
 ## Features
 
@@ -253,8 +253,17 @@ webxai/
 
 ## Screenshots
 
-The included dashboard and network views are available in `docs/screenshots/`.
-Capture any additional views in the same folder after seeding your CognoDB instance.
+| Dashboard | Alerts |
+|---|---|
+| ![Dashboard](docs/screenshots/dashboard-live.png) | ![Alerts](docs/screenshots/alerts-live.png) |
+
+| Search | Network graph |
+|---|---|
+| ![Search](docs/screenshots/search-live.png) | ![Network graph](docs/screenshots/network-live.png) |
+
+| Transaction timeline |
+|---|
+| ![Timeline](docs/screenshots/timeline-live.png) |
 
 ## Submission Checklist
 
